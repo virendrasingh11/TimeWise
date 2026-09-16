@@ -1,201 +1,34 @@
 # TimeWise - Product Requirements Document
 
 ## 1. Project Overview
-
-TimeWise is a simple personal time management application.
-
-It helps users create daily activities, estimate the time required for them, track the actual time spent, and mark activities as completed.
-
-The main purpose of the application is to help users understand and manage how they spend their time.
-
----
+TimeWise is a personal time management application that helps users create daily activities, track the actual time spent, and evaluate productivity through AI insights and dashboard analytics.
 
 ## 2. Problem Statement
-
-Students and other users often have multiple activities to complete during the day.
-
-It can be difficult to keep track of:
-
-- What tasks need to be completed
-- How much time was planned for each task
-- How much time was actually spent
-- Which tasks are completed
-
-TimeWise provides a simple solution for managing these activities and tracking time.
-
----
-
-## 3. Project Objectives
-
-The main objectives of TimeWise are:
-
-- Create and manage daily activities
-- Set an estimated time for activities
-- Track actual time spent on activities
-- Pause and resume time tracking
-- Mark activities as completed
-- Delete activities
-- Display basic daily progress
-- Store activity data in MongoDB
-
----
-
-## 4. Target Users
-
-The main users of TimeWise are:
-
-- Students
-- People managing personal tasks
-- Users who want to track their daily activities
-
----
-
-## 5. Main Features
-
-### 5.1 Task Management
-
-Users can:
-
-- Add a new activity
-- Enter the activity name
-- Select a category
-- Set estimated time
-- Delete an activity
-- Mark an activity as completed
-
-### 5.2 Time Tracking
-
-Users can:
-
-- Start the timer
-- Pause the timer
-- Resume the timer
-- Stop the timer
-- Save the tracked time
-
-### 5.3 Dashboard
-
-The dashboard displays:
-
-- Total activities
-- Estimated time
-- Completed activities
-- Actual time tracked
-- Daily progress
-
-### 5.4 History
-
-Users can view their recent activities and their current status.
-
----
-
-## 6. Activity Categories
-
-The application supports basic categories such as:
-
-- Study
-- Work
-- Fitness
-- Personal
-- Other
-
----
-
-## 7. Technology Requirements
-
-### Frontend
-
-- React
-- JavaScript
-- Axios
-- CSS
-- Lucide React
-
-### Backend
-
-- Node.js
-- Express.js
-
-### Database
-
-- MongoDB
-- Mongoose
-- MongoDB Atlas
-
----
-
-## 8. Functional Requirements
-
-### FR-01: Add Activity
-
-The system should allow the user to create a new activity by providing:
-
-- Activity name
-- Category
-- Estimated time
-
-### FR-02: View Activities
-
-The system should display activities stored in the database.
-
-### FR-03: Track Time
-
-The system should allow the user to start, pause, resume and stop a timer.
-
-### FR-04: Save Time
-
-When the timer is stopped, the tracked time should be saved to the database.
-
-### FR-05: Complete Activity
-
-The user should be able to mark an activity as completed.
-
-### FR-06: Delete Activity
-
-The user should be able to delete an activity.
-
-### FR-07: Display Progress
-
-The system should calculate and display basic progress information.
-
----
-
-## 9. Non-Functional Requirements
-
-### Performance
-
-The application should respond quickly for normal usage.
-
-### Usability
-
-The interface should be simple and easy to understand.
-
-### Reliability
-
-Activity data should be stored in MongoDB so that it is not lost when the page is refreshed.
-
-### Security
-
-Database credentials should be stored in environment variables and should not be uploaded to GitHub.
-
----
-
-## 10. Future Improvements
-
-The project can be improved in the future by adding:
-
-- User authentication
-- Multiple user accounts
-- Better analytics
-- Weekly and monthly reports
-- Calendar integration
-- Mobile application
-- Reminder notifications
-
----
-
-## 11. Project Scope
-
-The current version focuses on basic personal time management.
-
-The project intentionally keeps the functionality simple so that the main features are easy to use and understand.
+Students need a practical way to keep track of what tasks need completing, estimated vs actual time spent, and a way to break down large goals into actionable tasks.
+
+## 3. Main Features
+- **Authentication**: Secure login/registration.
+- **Task Management**: Create, edit, prioritize, and delete tasks.
+- **Time Tracking**: Start/pause/stop timer per task.
+- **Dashboard**: Real-time aggregated statistics.
+- **AI Task Planner**: Break down goals into tasks using LLM.
+- **History**: View completed tasks.
+
+## 4. Technology Requirements
+- **Frontend**: React, React Router, Vite, Axios
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (Atlas) for main data, Postgres (Prisma) for analytical demo module.
+- **AI**: Google Gemini SDK.
+
+## 5. Functional Requirements
+- **FR-01**: Secure User Registration and Login using JWT.
+- **FR-02**: Add/View/Delete Tasks bound to the authenticated user.
+- **FR-03**: Track actual time spent dynamically using interval timers.
+- **FR-04**: Save tracked time securely to the backend.
+- **FR-05**: AI Planner should accept a natural language goal and return structured tasks.
+- **FR-06**: Display progress through grouped metrics and categories (MongoDB Aggregation).
+
+## 6. Non-Functional Requirements
+- **Security**: Passwords hashed with bcrypt, strict CORS, Rate Limiting, environment variables for secrets.
+- **Performance**: Database indexing to ensure fast query resolution.
+- **Usability**: Clean, modern, student-built interface avoiding excessive "AI-generated" aesthetics.
