@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement()) // Primary Key
+  email     String    @unique // Indexing
+  name      String
+  sessions  Session[] // One-to-Many relationship
+  createdAt DateTime  @default(now())
+}
+
+model Session {
+  id           Int      @id @default(autoincrement())
+  userId       Int      // Foreign Key
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  taskCategory String
+  durationMin  Int
+  completedAt  DateTime @default(now())
+
+  @@index([userId, taskCategory]) // Multi-column indexing for query performance
+}
