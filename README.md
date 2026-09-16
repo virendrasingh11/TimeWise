@@ -1,52 +1,55 @@
 # TimeWise
 
-TimeWise is a simple personal time management application.
-
-It helps users create tasks, estimate the time required for each task, record the actual time spent, and mark tasks as completed.
+A student-built productivity and time-management application demonstrating full-stack JavaScript, React, Express, MongoDB, and modern AI integrations.
 
 ## Features
+- **Task Management**: Create, edit, and track tasks.
+- **Timer**: Built-in time tracking per task.
+- **Dashboard**: Real-time aggregated statistics (MongoDB Aggregation).
+- **AI Task Planner**: Uses Google Gemini to break down goals into sub-tasks securely.
+- **Security**: JWT Authentication, password hashing, and rate limiting.
 
-- Create a new task
-- Add task category
-- Set estimated time
-- Track actual time spent
-- Mark tasks as completed
-- Delete tasks
-- View all tasks
-- Store task data in MongoDB
+## Tech Stack
+- **Frontend**: React, Vite, React Router, Axios, Lucide React
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (Mongoose), Postgres (Prisma) for analytical demo module
+- **AI**: Google Generative AI (Gemini)
 
-## Technologies Used
+## Setup Instructions
 
-### Frontend
-- React
-- JavaScript
-- CSS
-- Vite
+### 1. Environment Variables
+Copy `.env.example` to `.env` in both `frontend/` and `backend/` and fill in the values.
+- `MONGODB_URI`: Your MongoDB connection string.
+- `JWT_SECRET`: Any random string for signing tokens.
+- `LLM_API_KEY`: Google Gemini API Key.
 
-### Backend
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
+### 2. Backend
+```bash
+cd backend
+npm install
+npm run dev
+```
 
-## Project Structure
+### 3. Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-```text
-TimeWise/
-│
-├── backend/
-│   ├── models/
-│   ├── routes/
-│   ├── server.js
-│   └── package.json
-│
-├── frontend/
-│   ├── src/
-│   ├── public/
-│   └── package.json
-│
-└── docs/
-    ├── PRD.md
-    ├── HLD.md
-    └── LLD.md
-    
+### 4. Relational Database Demo (Prisma/Postgres)
+To run the SQL/relational concepts demonstration:
+```bash
+cd backend
+npm install @prisma/client
+npx prisma db push --schema=database/postgres/schema.prisma
+npx prisma generate --schema=database/postgres/schema.prisma
+node database/postgres/demo.js
+```
+
+## Deployment
+- **Frontend (Vercel)**: Connect your GitHub repo to Vercel. Ensure `VITE_API_URL` is set to your deployed backend URL in the Vercel dashboard. The build command is `npm run build` and the output directory is `dist`.
+- **Backend (Render)**: Create a new Web Service on Render, connect the repo, set root directory to `backend`, build command `npm install`, start command `npm start`. Add all environment variables from `.env`.
+
+## Architecture and Concepts
+Please refer to the `docs/` folder for HLD, LLD, PRD, and `CONCEPTS.md` which maps the assessor concepts to code implementations for viva preparation.
